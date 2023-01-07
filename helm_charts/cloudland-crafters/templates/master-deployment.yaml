@@ -30,5 +30,10 @@ spec:
               containerPort: {{ .Values.master.service.proxy.port }} #25565
               protocol: TCP
           volumeMounts:
-            - name: "data"
+            - name: data-volume
               mountPath: "/multipaper/data"
+      volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: azure-mc-data
+
