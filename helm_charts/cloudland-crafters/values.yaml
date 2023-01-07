@@ -1,0 +1,20 @@
+# Default values for cloudland-crafters.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+{{ .Values.service.port }}:
+  image:
+    # Master multipaper dockerfile
+    repository: shootgan/cloudland-master
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "latest"
+  service:
+    proxy:
+      port: 25565
+      targetPort: 25565
+      type: NodePort
+    server:
+      port: 35353
+      targetPort: 35353
+      type: ClusterIP

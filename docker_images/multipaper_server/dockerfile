@@ -1,0 +1,14 @@
+FROM eclipse-temurin:17.0.3_7-jre-alpine
+# Setup groups and install dumb init
+RUN addgroup --gid 1001 multipaper && \
+    adduser --home /multipaper --uid 1001 -S -G multipaper multipaper
+ARG URL=https://multipaper.io/api/v2/projects/multipaper/versions/1.19.2/builds/37/downloads/multipaper-1.19.2-37.jar
+USER multipaper
+WORKDIR /server
+ADD --chown=multipaper:multipaper $URL /server/server.jar
+COPY --chown=multipaper:multipaper  start.sh   ./
+COPY  --chown=multipaper:multipaper spigot.yml ./
+COPY  --chown=multipaper:multipaper server.properties ./ 
+COPY  --chown=multipaper:multipaper eula.txt ./
+EXPOSE 25566/tcp
+ENTRYPOINT ["/server/start.sh"]

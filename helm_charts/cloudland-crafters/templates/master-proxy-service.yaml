@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "cloudland-crafters.fullname" . }}
+  labels:
+    {{- include "cloudland-crafters.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.master.service.proxy.type }}
+  ports:
+    - port: {{ .Values.master.service.proxy.port }}
+      targetPort: {{ .Values.master.service.proxy.targetPort }}
+      protocol: TCP
+      name: proxy
+  selector:
+    {{- include "cloudland-crafters.selectorLabels" . | nindent 4 }}

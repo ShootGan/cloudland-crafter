@@ -1,0 +1,20 @@
+FROM eclipse-temurin:17.0.3_7-jre-alpine
+
+LABEL maintainer="Pawel Nalepka"
+LABEL version="1.0.0"
+LABEL description="Docker image for minecraft multipaper master server"
+
+
+RUN addgroup --gid 1001 multipaper && \
+    adduser --home /multipaper --uid 1001 -S -G multipaper multipaper
+ARG URL_MASTER=https://multipaper.io/api/v2/projects/multipaper/versions/1.19.2/builds/37/downloads/MultiPaper-Master-2.10.1-all.jar
+ARG file_name=multipaper-1.19.2-37.jar
+USER multipaper
+WORKDIR /multipaper
+ADD --chown=multipaper:multipaper $URL_MASTER /multipaper/server.jar
+COPY  --chown=multipaper:multipaper start.sh ./ 
+EXPOSE 35353/tcp
+EXPOSE 25565/tcp
+VOLUME [ "/multipaper/data" ]
+WORKDIR /multipaper/data
+ENTRYPOINT ["/multipaper/start.sh"]
