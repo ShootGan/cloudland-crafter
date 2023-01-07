@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: {{ include "cloudland-crafters.fullname" . }}
   labels:
-    {{- include "cloudland-crafters.master.label" . | nindent 4 }}
+    {{- include "cloudland-crafters.master.labels" . | nindent 4 }}
 spec:
   replicas: 1
   selector:
