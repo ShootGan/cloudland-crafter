@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "cloudland-crafters.fullname" . }}
+  name: {{ include "cloudland-crafters.fullname" . }}-slave
   labels:
     {{- include "cloudland-crafters.labels" . | nindent 4 }}
 spec:
