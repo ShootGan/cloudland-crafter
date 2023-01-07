@@ -62,7 +62,7 @@ Create the name of the service account to use
 {{- end }}
 
 {{/*
-master labels
+Common labels master
 */}}
 {{- define "cloudland-crafters.master.labels" -}}
 helm.sh/chart: {{ include "cloudland-crafters.chart" . }}
@@ -74,14 +74,15 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 
 {{/*
-master labels
+Selector labels master
 */}}
 {{- define "cloudland-crafters.master.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "cloudland-crafters.name" . }}
+app.kubernetes.io/name: {{ include "cloudland-crafters.name" . }}-master
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
-server labels
+{{/*
+Common labels server
 */}}
 {{- define "cloudland-crafters.server.labels" -}}
 helm.sh/chart: {{ include "cloudland-crafters.chart" . }}
@@ -93,7 +94,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 
 {{/*
-server labels
+Selector labels server
 */}}
 {{- define "cloudland-crafters.server.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "cloudland-crafters.name" . }}
