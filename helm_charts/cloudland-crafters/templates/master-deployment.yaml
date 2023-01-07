@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "cloudland-crafters.fullname" . }}
   labels:
@@ -29,3 +29,6 @@ spec:
             - name: proxy
               containerPort: {{ .Values.master.service.proxy.port }} #25565
               protocol: TCP
+          volumeMounts:
+            - name: "data"
+              mountPath: "/multipaper/data"
