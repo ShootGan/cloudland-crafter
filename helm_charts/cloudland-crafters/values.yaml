@@ -12,7 +12,7 @@ master:
     proxy:
       port: 25565
       targetPort: 25565
-      type: NodePort
+      type: LoadBalancer
     server:
       port: 35353
       targetPort: 35353
@@ -28,4 +28,4 @@ slave:
     server:
       port: 25566
       targetPort: 25566
-      type: NodePort
+      type: ClusterIP
