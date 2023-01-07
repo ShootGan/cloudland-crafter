@@ -5,7 +5,7 @@ master:
   image:
     # Master multipaper dockerfile
     repository: shootgan/cloudland-master
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
     tag: "latest"
   service:
@@ -21,7 +21,7 @@ slave:
   image:
     # slave multipaper dockerfile
     repository: shootgan/cloudland-slave
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
     tag: "latest"
   service:
