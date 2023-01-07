@@ -1,8 +1,7 @@
 # Default values for cloudland-crafters.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-
-{{ .Values.service.port }}:
+master:
   image:
     # Master multipaper dockerfile
     repository: shootgan/cloudland-master
