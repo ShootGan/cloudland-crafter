@@ -77,7 +77,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Selector labels master
 */}}
 {{- define "cloudland-crafters.master.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "cloudland-crafters.name" . }}-master
+app.kubernetes.io/name: {{ include "cloudland-crafters.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
