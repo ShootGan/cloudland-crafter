@@ -24,9 +24,8 @@ spec:
           imagePullPolicy: {{ .Values.master.image.pullPolicy }}
           ports:
             - name: server
-              containerPort: {{ .Values.master.service.port }} #35353
+              containerPort: {{ .Values.master.service.server.port }} #35353
               protocol: TCP
             - name: proxy
               containerPort: {{ .Values.master.service.proxy.port }} #25565
               protocol: TCP
-          
