@@ -22,6 +22,7 @@ spec:
         - name: {{ .Chart.Name }}-slave
           image: "{{ .Values.slave.image.repository }}:{{ .Values.slave.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.slave.image.pullPolicy }}
+          stdin: true
           ports:
             - name: server-slave
               containerPort: {{ .Values.slave.service.server.port }} #25565
