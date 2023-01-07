@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: slave-multipaper-service
   labels:
-    slave
+    - slave
 spec:
   type: {{ .Values.slave.service.server.type }}
   ports:
