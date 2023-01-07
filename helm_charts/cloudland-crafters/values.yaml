@@ -17,3 +17,15 @@ master:
       port: 35353
       targetPort: 35353
       type: ClusterIP
+slave:
+  image:
+  # Master multipaper dockerfile
+  repository: shootgan/cloudland-slave
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+  service:
+    server:
+      port: 25566
+      targetPort: 25566
+      type: NodePort

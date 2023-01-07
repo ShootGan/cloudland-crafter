@@ -8,7 +8,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      master
+      slave
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -19,13 +19,10 @@ spec:
         {{- include "cloudland-crafters.selectorLabels" . | nindent 8 }}
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ .Values.master.image.repository }}:{{ .Values.master.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.master.image.pullPolicy }}
+        - name: {{ .Chart.Name }}-slave
+          image: "{{ .Values.slave.image.repository }}:{{ .Values.slave.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.slave.image.pullPolicy }}
           ports:
-            - name: server
-              containerPort: {{ .Values.master.service.server.port }} #35353
-              protocol: TCP
-            - name: proxy
-              containerPort: {{ .Values.master.service.proxy.port }} #25565
+            - name: server-slave
+              containerPort: {{ .Values.slave.service.server.port }} #25565
               protocol: TCP
