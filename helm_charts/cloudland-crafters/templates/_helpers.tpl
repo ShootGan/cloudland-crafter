@@ -60,3 +60,42 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+master labels
+*/}}
+{{- define "cloudland-crafters.master.labels" -}}
+helm.sh/chart: {{ include "cloudland-crafters.chart" . }}
+{{ include "cloudland-crafters.master.selectorLabels" . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
+
+{{/*
+master labels
+*/}}
+{{- define "cloudland-crafters.master.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "cloudland-crafters.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
+
+server labels
+*/}}
+{{- define "cloudland-crafters.server.labels" -}}
+helm.sh/chart: {{ include "cloudland-crafters.chart" . }}
+{{ include "cloudland-crafters.server.selectorLabels" . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
+
+{{/*
+server labels
+*/}}
+{{- define "cloudland-crafters.server.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "cloudland-crafters.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
