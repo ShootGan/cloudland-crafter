@@ -19,11 +19,11 @@ master:
       type: ClusterIP
 slave:
   image:
-  # Master multipaper dockerfile
-  repository: shootgan/cloudland-slave
-  pullPolicy: IfNotPresent
+    # slave multipaper dockerfile
+    repository: shootgan/cloudland-slave
+    pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+    tag: "latest"
   service:
     server:
       port: 25566
