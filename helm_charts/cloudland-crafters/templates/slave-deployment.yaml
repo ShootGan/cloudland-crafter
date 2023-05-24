@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dupa
+  name: slave-server
   labels:
     {{- include "cloudland-crafters.server.labels" . | nindent 4 }}
 spec:
