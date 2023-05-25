@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "cloudland-crafters.server.labels" . | nindent 4 }}
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       {{- include "cloudland-crafters.server.selectorLabels" . | nindent 6 }}
