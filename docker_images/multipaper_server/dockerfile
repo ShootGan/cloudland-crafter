@@ -4,11 +4,12 @@ RUN addgroup --gid 1001 multipaper && \
     adduser --home /multipaper --uid 1001 -S -G multipaper multipaper
 ARG URL=https://multipaper.io/api/v2/projects/multipaper/versions/1.19.2/builds/37/downloads/multipaper-1.19.2-37.jar
 USER multipaper
-WORKDIR /server
+WORKDIR /multipaper
 ADD --chown=multipaper:multipaper $URL /server/server.jar
 COPY --chown=multipaper:multipaper  start.sh   ./
 COPY  --chown=multipaper:multipaper spigot.yml ./
-COPY  --chown=multipaper:multipaper server.properties ./ 
+COPY  --chown=multipaper:multipaper server.properties ./
 COPY  --chown=multipaper:multipaper eula.txt ./
 EXPOSE 25566/tcp
-ENTRYPOINT ["/server/start.sh"]
+CMD ["java", "-Xms128M", "-Xmx4096M", "-DmultipaperMasterAddress=master-multipaper-service.default.svc.cluster.local:35353", "-jar", "server.jar"]
+WORKDIR /multipaper/data
