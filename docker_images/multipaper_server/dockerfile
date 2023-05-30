@@ -5,11 +5,11 @@ RUN addgroup --gid 1001 multipaper && \
 ARG URL=https://multipaper.io/api/v2/projects/multipaper/versions/1.19.2/builds/37/downloads/multipaper-1.19.2-37.jar
 USER multipaper
 WORKDIR /multipaper
-ADD --chown=multipaper:multipaper $URL /server/server.jar
+ADD --chown=multipaper:multipaper $URL server.jar
 COPY --chown=multipaper:multipaper  start.sh   ./
 COPY  --chown=multipaper:multipaper spigot.yml ./
 COPY  --chown=multipaper:multipaper server.properties ./
 COPY  --chown=multipaper:multipaper eula.txt ./
 EXPOSE 25566/tcp
-CMD ["java", "-Xms128M", "-Xmx4096M", "-DmultipaperMasterAddress=master-multipaper-service.default.svc.cluster.local:35353", "-jar", "server.jar"]
+CMD ["java", "-Xms128M", "-Xmx4096M", "-DmultipaperMasterAddress=master-multipaper-service.default.svc.cluster.local:35353", "-jar", "/multipaper/server.jar"]
 WORKDIR /multipaper/data
