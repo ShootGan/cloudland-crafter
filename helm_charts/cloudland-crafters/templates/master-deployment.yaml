@@ -19,7 +19,7 @@ spec:
         {{- include "cloudland-crafters.master.selectorLabels" . | nindent 8 }}
     spec:
         securityContext:
-        runAsNonRoot: true
+          runAsNonRoot: true
           runAsUser: 1001
           runAsGroup: 1001
           fsGroup: 1001
