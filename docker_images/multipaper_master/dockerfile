@@ -16,4 +16,4 @@ COPY  --chown=multipaper:multipaper start.sh ./
 EXPOSE 35353/tcp
 EXPOSE 25565/tcp
 CMD ["java", "-jar", "/multipaper/server.jar", "35353", "25565"]
-#WORKDIR /multipaper/data
+WORKDIR /multipaper/data
