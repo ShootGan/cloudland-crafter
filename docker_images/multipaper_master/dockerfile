@@ -12,9 +12,7 @@ ARG file_name=multipaper-1.19.2-37.jar
 USER multipaper
 WORKDIR /multipaper
 ADD --chown=multipaper:multipaper $URL_MASTER /multipaper/server.jar
-COPY  --chown=multipaper:multipaper start.sh ./ 
+COPY  --chown=multipaper:multipaper start.sh ./
 EXPOSE 35353/tcp
 EXPOSE 25565/tcp
-VOLUME [ "/multipaper/data" ]
-WORKDIR /multipaper/data
-ENTRYPOINT ["/multipaper/start.sh"]
+CMD ["java", "-jar", "/multipaper/server.jar", "35353", "25565"]

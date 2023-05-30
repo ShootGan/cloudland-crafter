@@ -31,7 +31,7 @@ spec:
               protocol: TCP
           volumeMounts:
             - name: data-volume
-              mountPath: "/multipaper/data"
+              mountPath: "/multipaper"
       volumes:
         - name: data-volume
           persistentVolumeClaim:
