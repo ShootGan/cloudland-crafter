@@ -31,7 +31,3 @@ spec:
             - name: data-volume
               mountPath: /multipaper/data
               subPath: data
-      volumes:
-        - name: data-volume
-          persistentVolumeClaim:
-            claimName: azure-mc-data
