@@ -12,5 +12,5 @@ COPY  --chown=multipaper:multipaper server.properties ./
 COPY  --chown=multipaper:multipaper eula.txt ./
 EXPOSE 25566/tcp
 #CMD ["java", "-Xms128M", "-Xmx4096M", "-DmultipaperMasterAddress=master-multipaper-service.default.svc.cluster.local:35353", "-jar", "/multipaper/server.jar"]
-CMD ["java", "-Xms128M", "-Xmx4096M", "-DmultipaperMasterAddress=host.docker.internal:35353", "-jar", "/multipaper/server.jar"]
+CMD ["java", "-Xms128M", "-Xmx4096M", "-DmultipaperMasterAddress=master-multipaper-service.default.svc.cluster.local:35353", "-jar", "/multipaper/server.jar"]
 WORKDIR /multipaper/data
