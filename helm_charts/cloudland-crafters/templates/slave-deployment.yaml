@@ -47,17 +47,17 @@ spec:
           configMap:
             name: server-config
             items:
-              - key: eula.txt
-                path: eula.txt
+              - key: "eula.txt"
+                path: "eula.txt"
         - name: multipaper-properties
           configMap:
             name: server-config
             items:
-              - key: server.properties
-                path: server.properties
+              - key: "server.properties"
+                path: "server.properties"
         - name: multipaper-spigot
           configMap:
             name: server-config
             items:
-              - key: spigot.yml
-                path: spigot.yml
+              - key: "spigot.yml"
+                path: "spigot.yml"
