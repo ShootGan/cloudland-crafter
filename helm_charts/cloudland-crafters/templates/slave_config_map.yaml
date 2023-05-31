@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: server_config
+  data:
+    eula.txt: |
+      eula=true
+    server.properties: |
+      {{ .Values.serverProperties | nindent 6}}
+    spigot.yaml: |
+      {{ .Values.spigotYaml | nindent 6}}

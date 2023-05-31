@@ -27,4 +27,11 @@ spec:
             - name: server-slave
               containerPort: {{ .Values.slave.service.server.port }} #25565
               protocol: TCP
-
+          VolumeMounts:
+            - mountPath: /multipaper/data
+              subPath: data
+              name: multipaper-config
+    volumes:
+      - name: multipaper-config
+        configMap:
+          name: multipaper-config
