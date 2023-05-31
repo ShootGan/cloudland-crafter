@@ -34,13 +34,9 @@ spec:
               protocol: TCP
           VolumeMounts:
             - name: multipaper-configs
-              mountPath: /multipaper/
-              subPath: "/data"
-              readOnly: false
+              mountPath: /multipaper/data
       volumes:
         - name: multipaper-configs
-          projected:
-            sources:
-              - configMap:
-                  name: server-config
+            configMap:
+              name: server-config
 
