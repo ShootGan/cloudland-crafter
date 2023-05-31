@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: server_config
+  name: server-config
   data:
     eula.txt: |
       eula=true
