@@ -32,10 +32,32 @@ spec:
             - name: server-slave
               containerPort: {{ .Values.slave.service.server.port }} #25565
               protocol: TCP
-          VolumeMounts:
-            - name: multipaper-configs
-              mountPath: /multipaper/data
+        VolumeMounts:
+              - mountPath: /multipaper/data/eula.txt
+                subPath: eula.txt
+                name: multipaper-eula
+              - mountPath: /multipaper/data/server.properties
+                subPath: server.properties
+                name: multipaper-propertis
+              - mountPath: /multipaper/data/spigot.yml
+                subPath: spigot.yml
+                name: multipaper-spigot
       volumes:
-        - name: multipaper-configs
+        - name: multipaper-eula
           configMap:
             name: server-config
+            items:
+              - key: eula.txt
+                path: eula.txt
+        - name: multipaper-propertis
+          configMap:
+            name: server-config
+            items:
+              - key: server.properties
+                path: server.properties
+        - name: multipaper-spigot
+          configMap:
+            name: server-config
+            items:
+              - key: spigot.yml
+                path: spigot.yml
