@@ -3,9 +3,9 @@ kind: ConfigMap
 metadata:
   name: server-config
 data:
-  eula.txt: |
+  - eula.txt: |
     eula=true
-  server.properties: |
+  - server.properties: |
     {{ .Values.serverProperties | nindent 4}}
-  spigot.yaml: |
+  - spigot.yaml: |
     {{ .Values.spigotYaml | nindent 4}}
