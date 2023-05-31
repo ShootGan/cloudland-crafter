@@ -6,6 +6,6 @@ data:
   eula.txt: |
     eula=true
   server.properties: |
-    {{ .Values.serverProperties | nindent 6}}
+    {{ .Values.serverProperties | nindent 4}}
   spigot.yaml: |
-    {{ .Values.spigotYaml | nindent 6}}
+    {{ .Values.spigotYaml | nindent 4}}
