@@ -37,6 +37,5 @@ spec:
               mountPath: /multipaper/data
       volumes:
         - name: multipaper-configs
-            configMap:
-              name: server-config
-
+          configMap:
+            name: server-config
