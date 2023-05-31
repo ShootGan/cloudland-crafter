@@ -7,5 +7,5 @@ data:
     eula=true
   - server.properties: |
     {{ .Values.serverProperties | nindent 4}}
-  - spigot.yaml: |
+  - spigot.yml: |
     {{ .Values.spigotYaml | nindent 4}}
