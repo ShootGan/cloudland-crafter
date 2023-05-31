@@ -32,7 +32,7 @@ spec:
             - name: server-slave
               containerPort: {{ .Values.slave.service.server.port }} #25565
               protocol: TCP
-        VolumeMounts:
+        volumeMounts:
           - mountPath: /multipaper/data/eula.txt
             subPath: eula.txt
             name: multipaper-eula
