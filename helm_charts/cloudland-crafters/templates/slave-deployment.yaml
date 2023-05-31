@@ -18,6 +18,11 @@ spec:
       labels:
         {{- include "cloudland-crafters.server.selectorLabels" . | nindent 8 }}
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
       containers:
         - name: {{ .Chart.Name }}-slave
           image: "{{ .Values.slave.image.repository }}:{{ .Values.slave.image.tag | default .Chart.AppVersion }}"
