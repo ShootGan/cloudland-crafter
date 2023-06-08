@@ -1,14 +1,23 @@
+# Chose operating system
 FROM eclipse-temurin:17.0.3_7-jre-alpine
-# Setup groups and install dumb init
+# Additional variables
+ARG URL=https://multipaper.io/api/v2/projects/multipaper/versions/1.19.2/builds/37/downloads/multipaper-1.19.2-37.jar
+# Setup groups
 RUN addgroup --gid 1001 multipaper && \
     adduser --home /multipaper --uid 1001 -S -G multipaper multipaper
-ARG URL=https://multipaper.io/api/v2/projects/multipaper/versions/1.19.2/builds/37/downloads/multipaper-1.19.2-37.jar
+# Chose current user
 USER multipaper
+# Chose working directory
 WORKDIR /multipaper
+# Add all neccesary files to container image
 ADD --chown=multipaper:multipaper $URL server.jar
-COPY --chown=multipaper:multipaper  start.sh   ./
 COPY  --chown=multipaper:multipaper spigot.yml ./
 COPY  --chown=multipaper:multipaper server.properties ./
 COPY  --chown=multipaper:multipaper eula.txt ./
+# Expose ports
 EXPOSE 25566/tcp
-CMD ["java", "-Xms128M", "-Xmx4096M", "-DmultipaperMasterAddress=master-multipaper-service.default.svc.cluster.local:35353", "-jar", "/multipaper/server.jar"]
+# Run start command
+CMD ["java", "-Xms128M", "-Xmx4096M", "-DmultipaperMasterAddress=master-multipaper-service.multipaper.svc.cluster.local:35353", "-jar", "/multipaper/server.jar"]
+
+
+
