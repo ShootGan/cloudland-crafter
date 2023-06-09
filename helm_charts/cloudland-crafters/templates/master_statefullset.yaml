@@ -34,6 +34,11 @@ spec:
             - name: proxy
               containerPort: {{ .Values.master.service.proxy.port }} #25565
               protocol: TCP
+          resources:
+            limits:
+              cpu: 1000m
+            requests:
+              cpu: 200m
           volumeMounts:
             - name: data-volume
               mountPath: "/multipaper/data"
