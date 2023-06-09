@@ -2,5 +2,5 @@ apiVersion: v2
 name: cloudland-crafters
 description: A Helm chart for Minecraft multipaper server
 type: application
-version: 2.3.8
+version: 2.3.9
 appVersion: "1.19.2"
