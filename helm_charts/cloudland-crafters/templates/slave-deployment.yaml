@@ -2,37 +2,37 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: slave-server
-  labels:
-    {{- include "cloudland-crafters.server.labels" . | nindent 4 }}
+labels:
+{{- include "cloudland-crafters.server.labels" . | nindent 4 }}
 spec:
-  selector:
-    matchLabels:
-      {{- include "cloudland-crafters.server.selectorLabels" . | nindent 6 }}
-  template:
-    metadata:
-      {{- with .Values.podAnnotations }}
-      annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      labels:
-        {{- include "cloudland-crafters.server.selectorLabels" . | nindent 8 }}
-    spec:
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 1001
-        runAsGroup: 1001
-        fsGroup: 1001
-      containers:
-        - name: {{ .Chart.Name }}-slave
-          image: "{{ .Values.slave.image.repository }}:{{ .Values.slave.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.slave.image.pullPolicy }}
-          stdin: true
-          ports:
-            - name: server-slave
-              containerPort: {{ .Values.slave.service.server.port }} #25565
-              protocol: TCP
-          resources:
-            limits:
-              cpu: 1500m
+selector:
+matchLabels:
+  {{- include "cloudland-crafters.server.selectorLabels" . | nindent 6 }}
+template:
+metadata:
+  {{- with .Values.podAnnotations }}
+  annotations:
+    {{- toYaml . | nindent 8 }}
+  {{- end }}
+  labels:
+    {{- include "cloudland-crafters.server.selectorLabels" . | nindent 8 }}
+spec:
+  securityContext:
+    runAsNonRoot: true
+            runAsUser: 1001
+            runAsGroup: 1001
+            fsGroup: 1001
+          containers:
+            - name: {{ .Chart.Name }}-slave
+              image: "{{ .Values.slave.image.repository }}:{{ .Values.slave.image.tag | default .Chart.AppVersion }}"
+              imagePullPolicy: {{ .Values.slave.image.pullPolicy }}
+              stdin: true
+              ports:
+                - name: server-slave
+                  containerPort: {{ .Values.slave.service.server.port }} #25565
+                  protocol: TCP
+              resources:
+                limits:
+                  cpu: 1500m
             requests:
               cpu: 1000m
