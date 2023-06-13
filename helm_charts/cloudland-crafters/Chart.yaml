@@ -2,5 +2,13 @@ apiVersion: v2
 name: cloudland-crafters
 description: A Helm chart for Minecraft multipaper server
 type: application
-version: 2.3.11
+version: 2.3.12
 appVersion: "1.19.2"
+
+
+flux bootstrap github \
+  --owner=$GITHUB_USER \
+  --repository=cloudland-crafters-infra\
+  --branch=main \
+  --path=./clusters/cloudland-crafters \
+  --personal
